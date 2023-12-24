@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toy-lit-html</title>
+</head>
+<body>
+    <script type="module">
+      import { html, render } from './lit.js';
+
+      const helloTemplate = (name1, name2) => html`
+        <div>hi ${name1} !</div>
+        <div>hello ${name2} ?</div>
+      `
+
+      render(helloTemplate('foo', 'bar'), document.body)
+
+      window.onclick = () => {
+        render(helloTemplate('jucy' + Math.random(), 'bob'), document.body)
+      }
+
+    </script>
+</body>
+</html>
