@@ -17,7 +17,9 @@ keep lit-html's interface ASAP.
 
 # online demo
 
+[https://zhoukekestar.github.io/toy-lit-html/index.html](https://zhoukekestar.github.io/toy-lit-html/index.html)
 
+<video src="https://github.com/zhoukekestar/notes/assets/7157346/496c65aa-62d4-43f3-97ec-531f2b0b7bf1"></video>
 
 # Execute flow
 
