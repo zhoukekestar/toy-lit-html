@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/incremental-dom@0.7.0/dist/incremental-dom.js"></script>
+    <p>hello world</p>
+    <script>
+      var IncrementalDOM = window.IncrementalDOM,
+        elementOpen = IncrementalDOM.elementOpen,
+        elementClose = IncrementalDOM.elementClose,
+        elementVoid = IncrementalDOM.elementVoid,
+        text = IncrementalDOM.text
+
+      function render(data) {
+        if (data.someCondition) {
+          elementOpen('div', '', null)
+          text(data.text)
+          elementClose('div')
+        }
+        elementVoid('input', '', ['type', 'text'])
+        elementVoid('input', '', ['type', 'text'])
+        elementVoid('input', '', ['type', 'text'])
+        elementVoid('input', '', ['type', 'text'])
+        elementVoid('input', '', ['type', 'text'])
+        elementOpen('div', '', null)
+        if (data.someCondition) {
+          text(data.text)
+        }
+        elementClose('div')
+      }
+
+      var patch = window.IncrementalDOM.patch
+      var myElement = document.body
+      var data = {
+        text: 'Hello World!',
+        someCondition: false
+      }
+
+      patch(myElement, function () {
+        render(data)
+      })
+
+      window.onclick = () => {
+        data.text = 'Hello Bob!'
+        data.someCondition = !data.someCondition
+
+        patch(myElement, function () {
+          render(data)
+        })
+      }
+    </script>
+  </body>
+</html>
